@@ -1,0 +1,9 @@
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 220px;
+}
+.searchInput {
+  width: 100%;
+}
