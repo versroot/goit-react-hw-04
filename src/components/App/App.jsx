@@ -2,9 +2,10 @@ import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import Gallery from "../Gallery/Gallery";
 import Loader from "../Loader/Loader";
+import LoadMore from "../LoadMore/LoadMore";
+import ImageModal from "../ImageModal/ImageModal";
 import { Toaster, toast } from "react-hot-toast";
 import "./App.css";
-import LoadMore from "../LoadMore/LoadMore";
 
 const UNSPLASH_KEY = import.meta.env.VITE_UNSPLASH_KEY;
 
@@ -13,11 +14,12 @@ export default function App() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const fetchImages = async (query, pageNum = 1) => {
     const perPage = 10;
     const url = `https://api.unsplash.com/search/photos?query=${query}&client_id=${UNSPLASH_KEY}&page=${pageNum}&per_page=${perPage}`;
-
     const response = await fetch(url);
     if (!response.ok) throw new Error("Failed to fetch images");
     const data = await response.json();
@@ -62,14 +64,32 @@ export default function App() {
     }
   };
 
+  const openModal = (image) => {
+    setSelectedImage(image);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+    setModalIsOpen(false);
+  };
+
   return (
     <div className="container">
       <Toaster />
-      <h1>Gallery</h1>
       <SearchBar onSubmit={handleSubmit} />
-      <Gallery images={images} />
       {loading && <Loader />}
+      {images.length > 0 ? (
+        <Gallery images={images} onImageClick={openModal} />
+      ) : (
+        search && !loading && <p>No images found.</p>
+      )}
       {images.length > 0 && !loading && <LoadMore onClick={loadMore} />}
+      <ImageModal
+        isOpen={modalIsOpen}
+        image={selectedImage}
+        onRequestClose={closeModal}
+      />
     </div>
   );
 }

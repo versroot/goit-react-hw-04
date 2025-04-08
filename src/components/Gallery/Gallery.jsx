@@ -1,14 +1,12 @@
 import Image from "../Image/Image";
-// import "./Gallery.css"; // optional: CSS for grid
+// import "./Gallery.css";
 
-export default function Gallery({ images }) {
+export default function Gallery({ images, onImageClick }) {
   return (
     <div className="image-grid">
-      {images.length === 0 ? (
-        <p>No images found.</p>
-      ) : (
-        images.map((img) => <Image key={img.id} data={img} />)
-      )}
+      {images.map((img) => (
+        <Image key={img.id} data={img} onClick={() => onImageClick(img)} />
+      ))}
     </div>
   );
 }

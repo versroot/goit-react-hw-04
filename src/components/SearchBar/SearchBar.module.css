@@ -1,0 +1,6 @@
+.search {
+  border: 0 solid transparent;
+}
+.search:hover {
+  border: 1 solid gray;
+}
