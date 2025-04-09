@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.loadmore {
+  background-color: #5442f5;
+  color: white;
+  border: none;
+  padding: 10px;
+}

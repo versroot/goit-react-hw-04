@@ -2,12 +2,13 @@ import css from "./SearchBar.module.css";
 import { BsSearch } from "react-icons/bs";
 export default function SearchBar({ onSubmit }) {
   return (
-    <header>
-      <form onSubmit={onSubmit}>
-        <button className={css.search} type="submit">
-          <BsSearch />
+    <header className={css.topbar}>
+      <form onSubmit={onSubmit} className={css.searchform}>
+        <button className={css.searchbutton} type="submit">
+          <BsSearch className={css.icon} />
         </button>
         <input
+          className={css.searchinput}
           name="input"
           type="text"
           autoComplete="off"

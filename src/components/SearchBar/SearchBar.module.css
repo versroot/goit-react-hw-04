@@ -1,6 +1,29 @@
-.search {
-  border: 0 solid transparent;
+.topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 40px;
+
+  background-color: #5442f5;
 }
-.search:hover {
-  border: 1 solid gray;
+
+.searchbutton {
+  border: 0;
+  height: 30px;
+}
+
+.searchinput {
+  border: 0;
+  height: 30px;
+}
+.searchinput:focus {
+  outline: none;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
 }
