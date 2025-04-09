@@ -1,4 +1,4 @@
-import css from "./Image.module.css";
+import css from "./ImageCard.module.css";
 export default function Image({ data, onClick }) {
   const { urls, alt_description } = data;
 

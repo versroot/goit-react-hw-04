@@ -1,4 +1,4 @@
-import css from "./LoadMore.module.css";
+import css from "./LoadMoreBtn.module.css";
 export default function LoadMore({ onClick }) {
   return (
     <div className={css.wrapper}>
